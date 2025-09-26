@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLM Text Scraper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🤖 LLM Text Scraper</h1>
+      <p class="subtitle">Extract webpage text for AI consumption</p>
+    </header>
+    
+    <main class="main">
+      <div id="reconnectionBanner" class="reconnection-banner hidden">
+        🔄 Reconnected to active scraping session
+      </div>
+      
+      <div class="status-section">
+        <div id="currentUrl" class="current-url">
+          <span class="label">Current page:</span>
+          <span id="urlDisplay" class="url-text">Loading...</span>
+        </div>
+      </div>
+      
+      <div class="controls-section">
+        <button id="scrapeBtn" class="scrape-button">
+          <span class="button-icon">📄</span>
+          <span class="button-text">Scrape Current Page</span>
+        </button>
+        
+        <button id="scrapeAllBtn" class="scrape-button scrape-all-button">
+          <span class="button-icon">📚</span>
+          <span class="button-text">Scrape All Documentation</span>
+        </button>
+        
+        <button id="stopBtn" class="stop-button hidden">
+          <span class="button-icon">⏹️</span>
+          <span class="button-text">Stop Scraping</span>
+        </button>
+        
+        <div class="options">
+          <label class="checkbox-container">
+            <input type="checkbox" id="includeLinks" checked>
+            <span class="checkmark"></span>
+            Include link URLs
+          </label>
+          
+          <label class="checkbox-container">
+            <input type="checkbox" id="waitForDynamic" checked>
+            <span class="checkmark"></span>
+            Wait for dynamic content
+          </label>
+          
+          <label class="checkbox-container">
+            <input type="checkbox" id="includeEmbedded" checked>
+            <span class="checkmark"></span>
+            Extract embedded content
+          </label>
+        </div>
+      </div>
+      
+      <div id="progressSection" class="progress-section hidden">
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="progressText" class="progress-text">Initializing...</div>
+        
+        <div id="detailedProgress" class="detailed-progress">
+          <div id="currentAction" class="current-action">🔄 Starting...</div>
+          <div id="statsDisplay" class="stats-display">
+            <span id="expandedCount">Expanded: 0</span>
+            <span id="foundLinks">Found: 0</span>
+            <span id="scrapedCount">Scraped: 0</span>
+          </div>
+          <div id="recentActions" class="recent-actions">
+            <div class="actions-header">Recent Actions:</div>
+            <div id="actionsList" class="actions-list"></div>
+          </div>
+          
+          <div id="contentPreview" class="content-preview hidden">
+            <div class="preview-header">
+              <span>Live Content Preview:</span>
+              <button id="togglePreview" class="toggle-preview">📄</button>
+            </div>
+            <div id="previewContent" class="preview-content"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="statusSection" class="status-section">
+        <div id="statusMessage" class="status-message"></div>
+      </div>
+    </main>
+    
+    <footer class="footer">
+      <div class="stats" id="stats">
+        <span id="wordCount">Words: --</span>
+        <span id="fileSize">Size: --</span>
+      </div>
+    </footer>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
